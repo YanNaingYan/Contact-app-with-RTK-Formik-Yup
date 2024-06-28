@@ -45,9 +45,9 @@ const SignInPage = () => {
 
   return (
     <AuthGuard check={data?.data?.success} token={data?.data?.token}>
-      <div className="w-3/5 mx-auto  h-full flex justify-center items-center">
-        <Card className="basis-2/4 p-5">
-          <CardHeader className="flex flex-row justify-between mb-5">
+      <div className="w-full md:w-4/5 xl:w-3/5 mx-auto  h-full flex justify-center items-center">
+        <Card className="lg:basis-2/4 p-5">
+          <CardHeader className="flex xl:flex-row justify-between mb-5">
             <CardTitle>Sign In</CardTitle>
             <CardDescription className="text-main underline hover:text-blue-600">
               <Link to={"signup"}> I don't have a account.</Link>
