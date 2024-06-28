@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 
 const AuthGuard = ({ check, children, token }) => {
   const nav = useNavigate();
-  const { data } = useUserProfileQuery();
+  const { data, isError } = useUserProfileQuery();
 
   useEffect(() => {
     if (check) {
@@ -12,7 +12,7 @@ const AuthGuard = ({ check, children, token }) => {
     } else if (data) {
       nav("/home");
     }
-  }, [check, data]);
+  }, [check, data, isError]);
 
   return <>{children}</>;
 };

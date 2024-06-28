@@ -153,13 +153,11 @@ const SignUpPage = () => {
                       type="submit"
                       className="w-full  mt-3"
                     >
-                      <span>
-                        {isSubmitting ? (
-                          <Loader2 className="ml-2 h-4 w-4 animate-spin" />
-                        ) : (
-                          "Sign Up "
-                        )}
-                      </span>
+                      {isSubmitting ? (
+                        <Loader2 className="ml-2 h-4 w-4 animate-spin" />
+                      ) : (
+                        "Sign Up "
+                      )}
                     </Button>
                   </Form>
                 </>

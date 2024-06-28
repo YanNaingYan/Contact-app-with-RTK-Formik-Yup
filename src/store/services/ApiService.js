@@ -6,6 +6,7 @@ export const ApiService = createApi({
     baseUrl: "https://contact.sankyitar.store/api/v1/",
     prepareHeaders: (headers, { getState }) => {
       const token = localStorage.getItem("auth");
+      console.log(token);
 
       if (token) {
         headers.set("authorization", `Bearer ${JSON.parse(token)}`);
@@ -13,5 +14,6 @@ export const ApiService = createApi({
       return headers;
     },
   }),
+  tagTypes: ["contact"],
   endpoints: (builder) => ({}),
 });

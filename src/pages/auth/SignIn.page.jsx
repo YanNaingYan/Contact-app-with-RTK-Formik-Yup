@@ -16,6 +16,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Loader2 } from "lucide-react";
 import { useSignInMutation } from "../../store/services/endpoints/auth.edpoints";
 import AuthGuard from "../../components/guard/Auth.guard";
+
 const SignInPage = () => {
   const nav = useNavigate();
   const validateSchema = yup.object({
@@ -96,13 +97,11 @@ const SignInPage = () => {
                       type="submit"
                       className="w-full  mt-3"
                     >
-                      <span>
-                        {isSubmitting ? (
-                          <Loader2 className="ml-2 h-4 w-4 animate-spin" />
-                        ) : (
-                          "Sign In "
-                        )}
-                      </span>
+                      {isSubmitting ? (
+                        <Loader2 className="ml-2 h-4 w-4 animate-spin" />
+                      ) : (
+                        "Sign In "
+                      )}
                     </Button>
                   </Form>
                 </>

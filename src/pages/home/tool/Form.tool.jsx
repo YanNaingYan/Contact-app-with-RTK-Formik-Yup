@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import * as yup from "yup";
 import { Formik, Form, ErrorMessage } from "formik";
 
@@ -7,15 +7,22 @@ import { SheetClose } from "../../../components/ui/sheet";
 import { Label } from "../../../components/ui/label";
 import { Input } from "../../../components/ui/input";
 import { Button } from "../../../components/ui/button";
+import {
+  useCreateMutation,
+  useUpdateMutation,
+} from "../../../store/services/endpoints/contact.endpoint";
 
-const FormTool = () => {
+const FormTool = ({ editData, handleClose }) => {
+  const [updateFun, apiData] = useUpdateMutation();
+  const closeRef = useRef();
   const initialValue = {
-    name: "",
-    email: "",
-    phone: "",
-    address: "",
+    name: editData.data?.name || "",
+    email: editData.data?.email || "",
+    phone: editData.data?.phone || "",
+    address: editData.data?.address || "",
   };
 
+  const [fun, { data }] = useCreateMutation();
   const validationSchema = yup.object({
     name: yup
       .string()
@@ -28,12 +35,19 @@ const FormTool = () => {
     phone: yup
       .string()
       .min(9, "that should be valid phone number")
-      .max(11, "that should be valid phone number")
+
       .required("phone field is required"),
     address: yup.string().required("address is required"),
   });
 
-  const handleSubmit = () => {};
+  const handleSubmit = async (value) => {
+    if (editData.edit) {
+      await updateFun({ id: editData.data?.id, ...value });
+    } else {
+      await fun(value);
+    }
+    closeRef.current.click();
+  };
 
   return (
     <div className="h-full">
@@ -114,7 +128,11 @@ const FormTool = () => {
                 </div>
               </div>
               <div className="flex gap-3">
-                <SheetClose className="w-full mt-3">
+                <SheetClose
+                  onClick={handleClose}
+                  ref={closeRef}
+                  className="w-full mt-3"
+                >
                   <Button
                     variant="outline"
                     disabled={isSubmitting}
