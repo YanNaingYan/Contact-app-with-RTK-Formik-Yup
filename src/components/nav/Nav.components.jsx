@@ -14,6 +14,8 @@ const NavComponents = () => {
   const handleLogout = () => {
     logoutFun();
     localStorage.removeItem("auth");
+
+    nav("/");
     nav(0);
     toast.success("Logout Successful");
   };
