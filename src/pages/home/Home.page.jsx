@@ -37,7 +37,7 @@ const HomePage = () => {
       <Sheet>
         <div className="w-screen h-screen bg-[#FCFCFD]">
           <NavComponents />
-          <div className="px-52 mx-auto">
+          <div className="px-3 lg:px-10 xl:px-52 mx-auto">
             <div className="flex justify-end mb-5">
               <SheetTrigger>
                 <Button className=" space-x-2 mt-5">
@@ -69,7 +69,11 @@ const HomePage = () => {
             )}
           </div>
 
-          <SheetContent onClose={handleClose} onOverlayClick={handleClose}>
+          <SheetContent
+            className=" md:w-full"
+            onClose={handleClose}
+            onOverlayClick={handleClose}
+          >
             <SheetHeader>
               <SheetTitle>Create Contact</SheetTitle>
             </SheetHeader>

@@ -61,13 +61,13 @@ const SignUpPage = () => {
           description: data.error.data.message,
         });
       } else if (data.data) {
-        nav("/home");
+        nav("/");
       }
     },
     [data]
   );
   return (
-    <AuthGuard>
+    <AuthGuard path="/signup">
       <div className="w-3/5 mx-auto  h-full flex justify-center items-center">
         <Card className="basis-2/4 p-5">
           <CardHeader className="flex flex-row justify-between mb-5">
@@ -142,11 +142,14 @@ const SignUpPage = () => {
                       className="text-red-500 text-sm"
                       name="password_confirmation"
                     />
-                    <CardFooter className="text-main text-sm font-bold hover:text-blue-600 cursor-pointer">
-                      <Link to={"/"}>
-                        Already have an account?{" "}
-                        <span className="underline"> Click here.</span>
-                      </Link>
+                    <CardFooter className="text-main text-sm font-bold cursor-pointer">
+                      <span>
+                        Already have an account?
+                        <span className="underline  hover:text-blue-600">
+                          {" "}
+                          <Link to={"/"}>Click here.</Link>
+                        </span>
+                      </span>
                     </CardFooter>
                     <Button
                       disabled={isSubmitting}
