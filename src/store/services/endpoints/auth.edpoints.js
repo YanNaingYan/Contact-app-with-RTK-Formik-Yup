@@ -24,7 +24,6 @@ const authEndpoints = ApiService.injectEndpoints({
         url: "user-logout",
         method: "POST",
       }),
-      invalidatesTags: ["contact"],
     }),
   }),
 });
