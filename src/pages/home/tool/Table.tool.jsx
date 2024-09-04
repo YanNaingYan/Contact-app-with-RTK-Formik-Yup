@@ -24,6 +24,7 @@ const TableTool = ({ data, handleEdit }) => {
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes, delete it!",
+      confirmButtonColor: "#F03434",
       cancelButtonText: "No, cancel!",
       onResolve: () => {
         setSwalProps({
@@ -54,9 +55,9 @@ const TableTool = ({ data, handleEdit }) => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.map((i) => (
+          {data.map((i, index) => (
             <TableRow className="font-semibold" key={i.id}>
-              <TableCell>{i.id}</TableCell>
+              <TableCell>{index + 1}</TableCell>
               <TableCell>{i.name}</TableCell>
               <TableCell>{i.email}</TableCell>
               <TableCell>{i.phone}</TableCell>

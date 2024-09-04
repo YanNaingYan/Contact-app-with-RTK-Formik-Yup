@@ -39,7 +39,7 @@ const HomePage = () => {
           <NavComponents />
           <div className="px-3 lg:px-10 xl:px-52 mx-auto">
             <div className="flex justify-end mb-5">
-              <SheetTrigger>
+              <SheetTrigger asChild>
                 <Button className=" space-x-2 mt-5">
                   <FaPlus />
                   <p>Create Contact</p>

@@ -33,18 +33,18 @@ const SignInPage = () => {
     email: "",
     password: "",
   };
-  const [fun, data] = useSignInMutation();
+  const [fun, { data, isError }] = useSignInMutation();
   const handleSubmit = async (value) => {
     await fun(value);
   };
   useEffect(() => {
-    if (data?.data?.success) {
+    if (data?.success) {
       nav("/home");
     }
   }, [data]);
 
   return (
-    <AuthGuard check={data?.data?.success} token={data?.data?.token}>
+    <AuthGuard check={data?.success} token={data?.token}>
       <div className="w-full md:w-4/5 xl:w-3/5 mx-auto  h-full flex justify-center items-center">
         <Card className="lg:basis-2/4 p-5">
           <CardHeader className="flex xl:flex-row justify-between mb-5">
@@ -103,6 +103,10 @@ const SignInPage = () => {
                         "Sign In "
                       )}
                     </Button>
+                    <p className="text-red-500">
+                      {data?.success === false &&
+                        "Incorrect Password! try Again."}
+                    </p>
                   </Form>
                 </>
               )}

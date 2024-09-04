@@ -4,12 +4,15 @@ export const ApiService = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: "https://contact.sankyitar.store/api/v1/",
-    prepareHeaders: (headers, { getState }) => {
+    prepareHeaders: (headers) => {
       const token = localStorage.getItem("auth");
-      console.log(token);
 
-      if (token) {
-        headers.set("authorization", `Bearer ${JSON.parse(token)}`);
+      try {
+        if (token) {
+          headers.set("authorization", `Bearer ${JSON.parse(token)}`);
+        }
+      } catch (e) {
+        console.error("Incorrect Password");
       }
       return headers;
     },

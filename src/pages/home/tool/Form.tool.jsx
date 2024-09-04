@@ -129,6 +129,7 @@ const FormTool = ({ editData, handleClose }) => {
               </div>
               <div className="flex gap-3">
                 <SheetClose
+                  asChild
                   onClick={handleClose}
                   ref={closeRef}
                   className="w-full mt-3"
